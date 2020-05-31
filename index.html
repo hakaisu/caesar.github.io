@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>42517024 - Caesar Cipher</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      background: #2d2d30;
+      font: 400 15px/1.8 Lato, sans-serif;
+      color: #777;
+    }
+    h3, h4 {
+      margin: 10px 0 30px 0;
+      letter-spacing: 10px;      
+      font-size: 20px;
+      color: #111;
+    }
+    .container {
+      padding: 80px 120px;
+    }
+    .person {
+      border: 10px solid transparent;
+      margin-bottom: 25px;
+      width: 80%;
+      height: 80%;
+      opacity: 0.7;
+    }
+    .person:hover {
+      border-color: #f1f1f1;
+    }
+    .carousel-inner img {
+      -webkit-filter: grayscale(90%);
+      filter: grayscale(90%); /* make all photos black and white */ 
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+    }
+    .carousel-caption h3 {
+      color: #fff !important;
+    }
+    @media (max-width: 600px) {
+      .carousel-caption {
+        display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+      }
+    }
+    .bg-1 {
+      background: #2d2d30;
+      color: #bdbdbd;
+    }
+    .bg-1 h3 {color: #fff;}
+    .bg-1 p {font-style: italic;}
+    .list-group-item:first-child {
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+    }
+    .list-group-item:last-child {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    .thumbnail {
+      border: none;
+      border-radius: 8px;
+    }
+    .thumbnail p {
+      margin-top: 15px;
+      color: #555;
+    }
+    .btn {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #f1f1f1;
+      border-radius: 0;
+      transition: .2s;
+    }
+    .btn:hover, .btn:focus {
+      border: 1px solid #333;
+      background-color: #fff;
+      color: #000;
+    }
+    .modal-header, h4, .close {
+      background-color: #333;
+      color: #fff !important;
+      text-align: center;
+      font-size: 30px;
+    }
+    .modal-header, .modal-body {
+      padding: 40px 50px;
+    }
+    .nav-tabs li a {
+      color: #777;
+    }
+    #googleMap {
+      width: 100%;
+      height: 400px;
+      -webkit-filter: grayscale(100%);
+      filter: grayscale(100%);
+    }  
+    .navbar {
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 0;
+      background-color: #2d2d30;
+      border: 0;
+      font-size: 11px !important;
+      letter-spacing: 4px;
+      opacity: 0.9;
+    }
+    .navbar li a, .navbar .navbar-brand { 
+      color: #d5d5d5 !important;
+    }
+    .navbar-nav li a:hover {
+      color: #fff !important;
+    }
+    .navbar-nav li.active a {
+      color: #fff !important;
+      background-color: #29292c !important;
+    }
+    .navbar-default .navbar-toggle {
+      border-color: transparent;
+    }
+    .open .dropdown-toggle {
+      color: #fff;
+      background-color: #555 !important;
+    }
+    .dropdown-menu li a {
+      color: #000 !important;
+    }
+    .dropdown-menu li a:hover {
+      background-color: red !important;
+    }
+    footer {
+      background-color: #2d2d30;
+      color: #f5f5f5;
+      padding: 32px;
+    }
+    footer a {
+      color: #f5f5f5;
+    }
+    footer a:hover {
+      color: #777;
+      text-decoration: none;
+    }  
+    .form-control {
+      border-radius: 0;
+    }
+    textarea {
+      resize: none;
+    }
+  </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#myPage">Cyber Security</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#myPage">Irfan Syamsuddin, ST, PG.Dipl.BEC, M.Com.ISM,Ph.D</a></li>
+          <li><a>D4 Teknik Komputer & Jaringan</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Container (TOUR Section) -->
+    <div class="bg-1">
+      <div class="container">
+        <p class="text-center" style="font-family: Montserrat, sans-serif; font-style: normal; font-size: xx-large;-large; color: white;">Caesar Chiper with Javascript.</p>
+        <form action="#" method="get" onsubmit="return false;">
+        <textarea placeholder="Masukkan text disini lalu tekan tombol encrypt atau decrypt." class="text-center" id="target" style="width:-webkit-fill-available; height:210px; color: black; font-family: Montserrat, sans-serif; font-size: x-large; padding-top: 86px; border-radius: 8px"></textarea>
+
+        <div class="row text-center">
+          <div class="col-sm-4">
+            <div class="thumbnail" style="color: #2d2d30">
+              <label for="shift" style="margin-top: 14px; font-family: Montserrat, sans-serif;">Pilih Jumlah Shift:</label><br>
+      <select id="shift" style="width:77px; font-size: -webkit-xxx-large; color: #2d2d30; border: none;">
+        <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option></select>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="thumbnail">
+              <button style="background: transparent; color: black; font-size: x-large;border: none; margin-top: 22px; margin-bottom: 26px" class="btn" type="button" id="encrypt" value="Encrypt" onclick="runScript();">Encrypt</button>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="thumbnail">
+              <button style="background: transparent; color: black; font-size: x-large;border: none; margin-top: 22px; margin-bottom: 26px" class="btn" type="button" id="decrypt" value="Decrypt" onclick="reverse();">Decrypt</button>
+            </div>
+          </div>
+            <p style="color: white; font-family: Montserrat, sans-serif; font-style: normal; text-align: right;padding-right: 15px">Made by 42517024 - Andi Muhammad Akbar.</p>
+        </div>
+      </div>
+
+      </form>
+
+
+
+    <script>
+      var mode = "ceaser";
+      var shift;
+      function encrypt(text, shift) {
+        var result = "";
+        if (mode == "ceaser"){
+    //loop through each caharacter in the text
+    for (var i = 0; i < text.length; i++) {
+
+             //get the character code of each letter
+             var c = text.charCodeAt(i);
+
+            // handle uppercase letters
+            if(c >= 65 && c <=  90) {
+              result += String.fromCharCode((c - 65 + shift) % 26 + 65); 
+
+            // handle lowercase letters
+        }else if(c >= 97 && c <= 122){
+          result += String.fromCharCode((c - 97 + shift) % 26 + 97);
+
+            // its not a letter, let it through
+        }else {
+          result += text.charAt(i);
+        }
+    }
+}
+return result;
+}
+
+function decrypt(text,shift){
+  var result = "";
+  shift = (26 - shift) % 26;
+  result = encrypt(text,shift);
+  return result;
+}
+
+function loaddropdown(){
+
+  var dropdown = document.getElementById("shift");
+
+  for(var i=1;i<=25;i++){
+    var newOption = document.createElement('option');
+    newOption.Text = i;
+    newOption.value= i;
+    newOption.textContent = i;
+    dropdown.options.add(newOption);
+  }
+}
+window.onload=loaddropdown();
+
+function runScript(){
+  var result="";
+  var target = document.getElementById("target");
+  shift = document.getElementById("shift").value;
+  result = encrypt(target.value, parseInt(shift ) );
+  target.value=(result);
+  document.getElementById("encrypt").disabled=true;
+  document.getElementById("decrypt").disabled=false;
+}
+
+function reverse(){
+  var result="";
+  var target = document.getElementById("target");
+  result = decrypt(target.value, parseInt(shift ) );
+  target.value=(result);
+  document.getElementById("encrypt").disabled=false;
+  document.getElementById("decrypt").disabled=true;
+}
+</script>
+
+    </body>
+    </html>
